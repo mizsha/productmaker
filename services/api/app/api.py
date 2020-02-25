@@ -8,9 +8,13 @@ from sanic.exceptions import abort, NotFound, Unauthorized, MethodNotSupported
 
 import lib.config
 
+import lib.component.system
+
 logging.basicConfig(level=logging.DEBUG)
 
 app = Sanic(__name__)
+
+app.blueprint(lib.component.system.bp)
 
 
 @app.listener('before_server_start')
