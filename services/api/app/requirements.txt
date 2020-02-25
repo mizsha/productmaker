@@ -3,3 +3,5 @@ sanic-cors>=0.10.0.b1
 arq
 authlib
 sentry_sdk
+tortoise-orm
+asyncpg

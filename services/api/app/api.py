@@ -4,17 +4,29 @@ import logging
 
 from sanic import Sanic, response
 from sanic.response import json
-from sanic.exceptions import abort, NotFound, Unauthorized, MethodNotSupported
+from sanic.exceptions import abort, NotFound, Unauthorized, MethodNotSupported, InvalidUsage
+
+from tortoise.contrib.sanic import register_tortoise
+import tortoise.exceptions
+
+import aiohttp.client_exceptions
 
 import lib.config
+import lib.model
 
 import lib.component.system
+import lib.component.products
 
 logging.basicConfig(level=logging.DEBUG)
 
 app = Sanic(__name__)
 
 app.blueprint(lib.component.system.bp)
+app.blueprint(lib.component.products.bp)
+
+register_tortoise(
+    app, db_url=lib.config.DATABASE_URL, modules={"model": ["lib.model"]}, generate_schemas=True
+)
 
 
 @app.listener('before_server_start')
@@ -39,6 +51,7 @@ async def error401(request, exception):
 
 
 @app.exception(NotFound)
+@app.exception(tortoise.exceptions.DoesNotExist)
 async def error404(request, exception):
     """
         Catch all 404 errors and transform response to json.
@@ -49,7 +62,20 @@ async def error404(request, exception):
     }, status=404)
 
 
+@app.exception(tortoise.exceptions.OperationalError)
+@app.exception(aiohttp.client_exceptions.ServerTimeoutError)
+async def error504(request, exception):
+    """
+        Catch all 504 errors and transform response to json.
+    """
+    return json({
+        'status': 504,
+        'statusMessage': str(exception)
+    }, status=504)
+
+
 @app.exception(MethodNotSupported)
+@app.exception(InvalidUsage)
 async def error405(request, exception):
     """
         Catch all 405 errors and transform response to json.

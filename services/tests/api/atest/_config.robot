@@ -1,5 +1,6 @@
 *** Settings ***
 Library         REST    ${SERVER}
+Library         FakerLibrary
 Documentation   Global config.
 
 *** Variables ***

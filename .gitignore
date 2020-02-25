@@ -27,6 +27,9 @@ share/python-wheels/
 *.egg
 MANIFEST
 
+# Supervisor
+supervisord.pid
+
 # Robot test results directory
 results/*
 !results/.gitkeep 
