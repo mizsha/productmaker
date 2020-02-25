@@ -1,0 +1,9 @@
+sanic
+sanic-cors>=0.10.0.b1
+sanic-validation
+arq
+authlib
+sentry_sdk
+tortoise-orm
+asyncpg
+aiohttp
