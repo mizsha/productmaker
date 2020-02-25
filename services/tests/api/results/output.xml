@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 3.1.2 (Python 3.7.1 on linux)" generated="20200225 23:48:47.494" rpa="false">
+<robot generator="Robot 3.1.2 (Python 3.7.3 on linux)" generated="20200226 00:32:13.099" rpa="false">
 <suite id="s1" name="Atest" source="/media/EXT/app/work/applifting/productmaker/services/tests/api/atest">
 <suite id="s1-s1" name="Healthcheck" source="/media/EXT/app/work/applifting/productmaker/services/tests/api/atest/healthcheck.robot">
 <test id="s1-s1-t1" name="GET healtcheck method">
@@ -11,7 +11,7 @@
 <arguments>
 <arg>/system/healthcheck</arg>
 </arguments>
-<status status="PASS" starttime="20200225 23:48:48.106" endtime="20200225 23:48:48.139"></status>
+<status status="PASS" starttime="20200226 00:32:13.496" endtime="20200226 00:32:13.524"></status>
 </kw>
 <kw name="Integer" library="REST">
 <tags>
@@ -22,7 +22,7 @@
 <arg>response status</arg>
 <arg>200</arg>
 </arguments>
-<status status="PASS" starttime="20200225 23:48:48.139" endtime="20200225 23:48:48.141"></status>
+<status status="PASS" starttime="20200226 00:32:13.524" endtime="20200226 00:32:13.525"></status>
 </kw>
 <kw name="String" library="REST">
 <tags>
@@ -33,9 +33,9 @@
 <arg>response body status</arg>
 <arg>OK</arg>
 </arguments>
-<status status="PASS" starttime="20200225 23:48:48.141" endtime="20200225 23:48:48.142"></status>
+<status status="PASS" starttime="20200226 00:32:13.525" endtime="20200226 00:32:13.526"></status>
 </kw>
-<status status="PASS" starttime="20200225 23:48:48.105" endtime="20200225 23:48:48.142" critical="yes"></status>
+<status status="PASS" starttime="20200226 00:32:13.496" endtime="20200226 00:32:13.526" critical="yes"></status>
 </test>
 <test id="s1-s1-t2" name="PATCH healtcheck method, negative test">
 <kw name="Patch" library="REST">
@@ -47,7 +47,7 @@
 <arg>/system/healthcheck</arg>
 <arg>{}</arg>
 </arguments>
-<status status="PASS" starttime="20200225 23:48:48.143" endtime="20200225 23:48:48.149"></status>
+<status status="PASS" starttime="20200226 00:32:13.527" endtime="20200226 00:32:13.533"></status>
 </kw>
 <kw name="Integer" library="REST">
 <tags>
@@ -58,12 +58,12 @@
 <arg>response status</arg>
 <arg>405</arg>
 </arguments>
-<status status="PASS" starttime="20200225 23:48:48.149" endtime="20200225 23:48:48.150"></status>
+<status status="PASS" starttime="20200226 00:32:13.533" endtime="20200226 00:32:13.534"></status>
 </kw>
-<status status="PASS" starttime="20200225 23:48:48.143" endtime="20200225 23:48:48.150" critical="yes"></status>
+<status status="PASS" starttime="20200226 00:32:13.527" endtime="20200226 00:32:13.534" critical="yes"></status>
 </test>
 <doc>Test scenarios for healtcheck method.</doc>
-<status status="PASS" starttime="20200225 23:48:47.524" endtime="20200225 23:48:48.151"></status>
+<status status="PASS" starttime="20200226 00:32:13.124" endtime="20200226 00:32:13.535"></status>
 </suite>
 <suite id="s1-s2" name="Products" source="/media/EXT/app/work/applifting/productmaker/services/tests/api/atest/products.robot">
 <test id="s1-s2-t1" name="CREATE random product">
@@ -73,8 +73,8 @@
 <assign>
 <var>${name}</var>
 </assign>
-<msg timestamp="20200225 23:48:48.156" level="INFO">${name} = Allow break discuss sense.</msg>
-<status status="PASS" starttime="20200225 23:48:48.155" endtime="20200225 23:48:48.156"></status>
+<msg timestamp="20200226 00:32:13.539" level="INFO">${name} = Either decision pretty room majority build wrong check.</msg>
+<status status="PASS" starttime="20200226 00:32:13.539" endtime="20200226 00:32:13.539"></status>
 </kw>
 <kw name="Sentence" library="FakerLibrary">
 <doc>Generate a random sentence
@@ -82,8 +82,8 @@
 <assign>
 <var>${description}</var>
 </assign>
-<msg timestamp="20200225 23:48:48.157" level="INFO">${description} = Seem admit reality begin despite.</msg>
-<status status="PASS" starttime="20200225 23:48:48.156" endtime="20200225 23:48:48.157"></status>
+<msg timestamp="20200226 00:32:13.540" level="INFO">${description} = Road window position success true another free.</msg>
+<status status="PASS" starttime="20200226 00:32:13.540" endtime="20200226 00:32:13.540"></status>
 </kw>
 <kw name="Post" library="REST">
 <tags>
@@ -94,7 +94,7 @@
 <arg>/products</arg>
 <arg>{ "name": "${name}", "description": "${description}" }</arg>
 </arguments>
-<status status="PASS" starttime="20200225 23:48:48.157" endtime="20200225 23:48:48.652"></status>
+<status status="PASS" starttime="20200226 00:32:13.540" endtime="20200226 00:32:28.407"></status>
 </kw>
 <kw name="Integer" library="REST">
 <tags>
@@ -105,7 +105,7 @@
 <arg>response status</arg>
 <arg>201</arg>
 </arguments>
-<status status="PASS" starttime="20200225 23:48:48.653" endtime="20200225 23:48:48.654"></status>
+<status status="PASS" starttime="20200226 00:32:28.408" endtime="20200226 00:32:28.409"></status>
 </kw>
 <kw name="Object" library="REST">
 <tags>
@@ -115,7 +115,7 @@
 <arguments>
 <arg>response body</arg>
 </arguments>
-<status status="PASS" starttime="20200225 23:48:48.655" endtime="20200225 23:48:48.657"></status>
+<status status="PASS" starttime="20200226 00:32:28.410" endtime="20200226 00:32:28.411"></status>
 </kw>
 <kw name="String" library="REST">
 <tags>
@@ -125,7 +125,7 @@
 <arguments>
 <arg>response body id</arg>
 </arguments>
-<status status="PASS" starttime="20200225 23:48:48.658" endtime="20200225 23:48:48.658"></status>
+<status status="PASS" starttime="20200226 00:32:28.412" endtime="20200226 00:32:28.413"></status>
 </kw>
 <kw name="String" library="REST">
 <tags>
@@ -136,7 +136,7 @@
 <arg>response body name</arg>
 <arg>${name}</arg>
 </arguments>
-<status status="PASS" starttime="20200225 23:48:48.659" endtime="20200225 23:48:48.659"></status>
+<status status="PASS" starttime="20200226 00:32:28.413" endtime="20200226 00:32:28.414"></status>
 </kw>
 <kw name="String" library="REST">
 <tags>
@@ -147,9 +147,9 @@
 <arg>response body description</arg>
 <arg>${description}</arg>
 </arguments>
-<status status="PASS" starttime="20200225 23:48:48.660" endtime="20200225 23:48:48.660"></status>
+<status status="PASS" starttime="20200226 00:32:28.415" endtime="20200226 00:32:28.416"></status>
 </kw>
-<status status="PASS" starttime="20200225 23:48:48.155" endtime="20200225 23:48:48.660" critical="yes"></status>
+<status status="PASS" starttime="20200226 00:32:13.539" endtime="20200226 00:32:28.416" critical="yes"></status>
 </test>
 <test id="s1-s2-t2" name="GET non existent product">
 <kw name="Get" library="REST">
@@ -160,7 +160,7 @@
 <arguments>
 <arg>/products/123</arg>
 </arguments>
-<status status="PASS" starttime="20200225 23:48:48.661" endtime="20200225 23:48:48.667"></status>
+<status status="PASS" starttime="20200226 00:32:28.417" endtime="20200226 00:32:28.423"></status>
 </kw>
 <kw name="Integer" library="REST">
 <tags>
@@ -171,9 +171,9 @@
 <arg>response status</arg>
 <arg>404</arg>
 </arguments>
-<status status="PASS" starttime="20200225 23:48:48.668" endtime="20200225 23:48:48.669"></status>
+<status status="PASS" starttime="20200226 00:32:28.424" endtime="20200226 00:32:28.424"></status>
 </kw>
-<status status="PASS" starttime="20200225 23:48:48.661" endtime="20200225 23:48:48.669" critical="yes"></status>
+<status status="PASS" starttime="20200226 00:32:28.417" endtime="20200226 00:32:28.425" critical="yes"></status>
 </test>
 <test id="s1-s2-t3" name="CREATE random product and verify with GET">
 <kw name="Sentence" library="FakerLibrary">
@@ -182,8 +182,8 @@
 <assign>
 <var>${name}</var>
 </assign>
-<msg timestamp="20200225 23:48:48.671" level="INFO">${name} = Fine watch successful poor.</msg>
-<status status="PASS" starttime="20200225 23:48:48.670" endtime="20200225 23:48:48.671"></status>
+<msg timestamp="20200226 00:32:28.426" level="INFO">${name} = Interesting agent sense together population.</msg>
+<status status="PASS" starttime="20200226 00:32:28.426" endtime="20200226 00:32:28.426"></status>
 </kw>
 <kw name="Sentence" library="FakerLibrary">
 <doc>Generate a random sentence
@@ -191,8 +191,8 @@
 <assign>
 <var>${description}</var>
 </assign>
-<msg timestamp="20200225 23:48:48.671" level="INFO">${description} = Free coach food.</msg>
-<status status="PASS" starttime="20200225 23:48:48.671" endtime="20200225 23:48:48.671"></status>
+<msg timestamp="20200226 00:32:28.427" level="INFO">${description} = Trade walk study name.</msg>
+<status status="PASS" starttime="20200226 00:32:28.427" endtime="20200226 00:32:28.427"></status>
 </kw>
 <kw name="Post" library="REST">
 <tags>
@@ -206,8 +206,8 @@
 <assign>
 <var>&amp;{res}</var>
 </assign>
-<msg timestamp="20200225 23:48:49.085" level="INFO">&amp;{res} = { seconds=0.409486 | status=201 | body={'id': '263ac462-082b-4648-aaf3-8593f0f6d774', 'name': 'Fine watch successful poor.', 'description': 'Free coach food.'} | headers={'Connection': 'keep-alive', '...</msg>
-<status status="PASS" starttime="20200225 23:48:48.672" endtime="20200225 23:48:49.085"></status>
+<msg timestamp="20200226 00:32:28.841" level="INFO">&amp;{res} = { seconds=0.409777 | status=201 | body={'id': '1bb50c13-8f0a-49d2-828e-29451c7f0ec9', 'name': 'Interesting agent sense together population.', 'description': 'Trade walk study name.'} | headers={'Conne...</msg>
+<status status="PASS" starttime="20200226 00:32:28.427" endtime="20200226 00:32:28.841"></status>
 </kw>
 <kw name="Integer" library="REST">
 <tags>
@@ -218,7 +218,7 @@
 <arg>response status</arg>
 <arg>201</arg>
 </arguments>
-<status status="PASS" starttime="20200225 23:48:49.085" endtime="20200225 23:48:49.086"></status>
+<status status="PASS" starttime="20200226 00:32:28.841" endtime="20200226 00:32:28.842"></status>
 </kw>
 <kw name="Get" library="REST">
 <tags>
@@ -228,7 +228,7 @@
 <arguments>
 <arg>/products/${res.body['id']}</arg>
 </arguments>
-<status status="PASS" starttime="20200225 23:48:49.086" endtime="20200225 23:48:49.106"></status>
+<status status="PASS" starttime="20200226 00:32:28.842" endtime="20200226 00:32:28.853"></status>
 </kw>
 <kw name="Integer" library="REST">
 <tags>
@@ -239,7 +239,7 @@
 <arg>response status</arg>
 <arg>200</arg>
 </arguments>
-<status status="PASS" starttime="20200225 23:48:49.106" endtime="20200225 23:48:49.107"></status>
+<status status="PASS" starttime="20200226 00:32:28.853" endtime="20200226 00:32:28.854"></status>
 </kw>
 <kw name="String" library="REST">
 <tags>
@@ -250,7 +250,7 @@
 <arg>response body name</arg>
 <arg>${name}</arg>
 </arguments>
-<status status="PASS" starttime="20200225 23:48:49.107" endtime="20200225 23:48:49.107"></status>
+<status status="PASS" starttime="20200226 00:32:28.854" endtime="20200226 00:32:28.855"></status>
 </kw>
 <kw name="String" library="REST">
 <tags>
@@ -261,12 +261,12 @@
 <arg>response body description</arg>
 <arg>${description}</arg>
 </arguments>
-<status status="PASS" starttime="20200225 23:48:49.108" endtime="20200225 23:48:49.108"></status>
+<status status="PASS" starttime="20200226 00:32:28.855" endtime="20200226 00:32:28.856"></status>
 </kw>
-<status status="PASS" starttime="20200225 23:48:48.669" endtime="20200225 23:48:49.108" critical="yes"></status>
+<status status="PASS" starttime="20200226 00:32:28.425" endtime="20200226 00:32:28.857" critical="yes"></status>
 </test>
 <doc>Test scenarios for products method.</doc>
-<status status="PASS" starttime="20200225 23:48:48.151" endtime="20200225 23:48:49.109"></status>
+<status status="PASS" starttime="20200226 00:32:13.535" endtime="20200226 00:32:28.858"></status>
 </suite>
 <suite id="s1-s3" name="System" source="/media/EXT/app/work/applifting/productmaker/services/tests/api/atest/system.robot">
 <test id="s1-s3-t1" name="GET invalid page, negative test">
@@ -278,7 +278,7 @@
 <arguments>
 <arg>/404/notfound</arg>
 </arguments>
-<status status="PASS" starttime="20200225 23:48:49.117" endtime="20200225 23:48:49.123"></status>
+<status status="PASS" starttime="20200226 00:32:28.863" endtime="20200226 00:32:28.868"></status>
 </kw>
 <kw name="Integer" library="REST">
 <tags>
@@ -289,14 +289,14 @@
 <arg>response status</arg>
 <arg>404</arg>
 </arguments>
-<status status="PASS" starttime="20200225 23:48:49.123" endtime="20200225 23:48:49.124"></status>
+<status status="PASS" starttime="20200226 00:32:28.868" endtime="20200226 00:32:28.870"></status>
 </kw>
-<status status="PASS" starttime="20200225 23:48:49.117" endtime="20200225 23:48:49.124" critical="yes"></status>
+<status status="PASS" starttime="20200226 00:32:28.863" endtime="20200226 00:32:28.870" critical="yes"></status>
 </test>
 <doc>Test scenarios for healtcheck method.</doc>
-<status status="PASS" starttime="20200225 23:48:49.111" endtime="20200225 23:48:49.124"></status>
+<status status="PASS" starttime="20200226 00:32:28.859" endtime="20200226 00:32:28.870"></status>
 </suite>
-<status status="PASS" starttime="20200225 23:48:47.496" endtime="20200225 23:48:49.126"></status>
+<status status="PASS" starttime="20200226 00:32:13.100" endtime="20200226 00:32:28.871"></status>
 </suite>
 <statistics>
 <total>

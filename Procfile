@@ -1,0 +1,1 @@
+api: sh -c 'cd ./services/api/app/ && exec python api.py'
