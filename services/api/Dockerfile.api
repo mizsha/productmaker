@@ -1,0 +1,16 @@
+FROM alpine:3
+MAINTAINER Michal Matous <michal.matous@gmail.com>
+
+EXPOSE 5000
+
+RUN apk add --no-cache curl python3-dev\
+  && rm -rf /var/cache/apk/*
+
+RUN pip3 install Cython
+COPY ./app/requirements.txt /app/build/requirements.txt
+RUN pip3 install -r /app/build/requirements.txt
+
+COPY ./app /app/
+WORKDIR /app
+
+CMD python3 api.py
