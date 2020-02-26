@@ -7,6 +7,7 @@ from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
 import lib.config
 import lib.model
+import lib.utils
 
 from tortoise import Tortoise, run_async
 from tortoise.exceptions import OperationalError
@@ -61,6 +62,11 @@ async def init():
 
     # Database connection
     await Tortoise.init(db_url=lib.config.DATABASE_URL, modules={"model": ["lib.model"]})
+    await Tortoise.generate_schemas()
+
+    if not lib.config.API_KEY:
+        # Obtain API_KEY if not specified
+        lib.config.API_KEY = await lib.utils.getKey()
 
 
 if __name__ == "__main__":

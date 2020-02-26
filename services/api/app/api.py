@@ -1,7 +1,5 @@
 # pylint: disable=E0401,E0611
 import logging
-import hashlib
-import aiohttp
 
 import aiohttp.client_exceptions
 
@@ -12,13 +10,13 @@ from sanic.exceptions import abort, NotFound, Unauthorized, MethodNotSupported, 
 from sanic_cors import CORS
 from sanic_openapi import swagger_blueprint
 
-from tortoise.transactions import atomic, in_transaction
 from tortoise.contrib.sanic import register_tortoise
 import tortoise.exceptions
 
 # Import app config and models
 import lib.config
 import lib.model
+import lib.utils
 
 # Import app endpoints
 import lib.component.system
@@ -31,7 +29,7 @@ app.config.API_VERSION = lib.config.VERSION
 app.config.API_TITLE = lib.config.TITLE
 app.config.API_BASEPATH = "/"
 app.config.API_CONTACT_EMAIL = 'info@{0}'.format(lib.config.DOMAIN)
-
+app.config.API_SCHEMES = ["https", "http"]
 
 # CORS module automagic
 CORS(app)
@@ -51,29 +49,9 @@ register_tortoise(
 
 @app.listener('before_server_start')
 async def before_server_start(app, loop) -> None:
-    """
-        If not API key specified in config default or 
-        environment variable, get new one and store to database for next run.
-    """
     if not lib.config.API_KEY:
-
-        @atomic()
-        async def getKey():
-
-            _hash = hashlib.md5(lib.config.API_URL.encode('utf-8')).hexdigest()
-            _key, _created = await lib.model.Keys.get_or_create(hash=_hash)
-            if _created:
-                async with aiohttp.ClientSession(conn_timeout=1) as client:
-                    async with client.post(lib.config.API_URL + '/auth') as resp:
-                        if resp.status != 201:
-                            raise tortoise.exceptions.OperationalError()
-
-                        _key.key = (await resp.json())["access_token"]
-                        await _key.save()
-
-            return _key.key
-
-        lib.config.API_KEY = await getKey()
+        # Obtain API_KEY if not specified
+        lib.config.API_KEY = await lib.utils.getKey()
 
 
 @app.exception(Unauthorized)
