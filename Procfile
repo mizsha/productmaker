@@ -1,1 +1,1 @@
-web: sh -c 'cd ./services/api/app/ && exec python api.py'
+web: cd services/api/app/ && python api.py
