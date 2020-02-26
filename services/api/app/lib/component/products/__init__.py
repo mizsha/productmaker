@@ -44,6 +44,7 @@ class ProductOutput:
     location="body", content_type="application/json"
 )
 @doc.produces(ProductOutput)
+@doc.response(201, ProductOutput, description="Product created")
 @doc.summary("Create new product")
 @validate_json(ProductForm, clean=True)
 async def create(request, valid_json) -> dict:
