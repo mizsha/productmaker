@@ -1,1 +1,1 @@
-web: cd services/api/app/ && python api.py
+web: cd services/api/app/ && ls && python api.py
