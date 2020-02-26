@@ -1,5 +1,7 @@
 # productmaker
 
+[![codecov.io](https://codecov.io/github/mizsha/productmaker/coverage.svg?branch=master)](https://codecov.io/github/mizsha/productmaker?branch=master)
+
 ## Demo
 
 - https://protected-savannah-03840.herokuapp.com/
