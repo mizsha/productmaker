@@ -1,16 +1,24 @@
 import aiohttp
 
-from sanic import Blueprint
-from sanic.response import json
-from sanic.exceptions import abort
-from sanic_validation import validate_json
-
-from tortoise.transactions import atomic, in_transaction
 from tortoise.exceptions import OperationalError
+from tortoise.transactions import atomic, in_transaction
+
+from sanic_validation import validate_json
+from sanic.exceptions import abort
+from sanic.response import json
+from sanic import Blueprint
 
 import lib.model
 
-bp = Blueprint('products', url_prefix='/products', version="v1")
+from . import offers
+
+bp_index = Blueprint('products', version="v1")
+
+bp = Blueprint.group(
+    bp_index,
+    offers.bp,
+    url_prefix='/products'
+)
 
 ProductForm = {
     'name': {'type': 'string', 'required': True},
@@ -18,9 +26,9 @@ ProductForm = {
 }
 
 
-@bp.post('/')
+@bp_index.post('/')
 @validate_json(ProductForm, clean=True)
-async def create(request, valid_json):
+async def create(request, valid_json) -> dict:
 
     @atomic()
     async def createProduct(data):
@@ -54,16 +62,16 @@ async def create(request, valid_json):
     return json(_item.output(), status=201)
 
 
-@bp.get('/')
-async def fetch(request):
+@bp_index.get('/')
+async def fetch(request) -> list:
 
     _items = lib.model.Products.filter().order_by('id')
 
     return json([_item.output() for _item in (await _items.all())])
 
 
-@bp.get('/<productId:uuid>')
-async def get(request, productId):
+@bp_index.get('/<productId:uuid>')
+async def get(request, productId) -> dict:
 
     _item = await lib.model.Products.get(id=productId).first()
 

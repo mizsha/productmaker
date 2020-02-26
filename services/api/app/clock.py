@@ -32,12 +32,10 @@ async def update():
                     raise OperationalError()
 
                 for i in await resp.json():
-                    print(i)
                     _offer, _status = await lib.model.Offers.get_or_create(
                         id=str(i["id"]),
                         product=_item
                     )
-                    print(_status)
                     _offer.price = i["price"]
                     _offer.items_in_stock = i["items_in_stock"]
                     await _offer.save()

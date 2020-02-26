@@ -2,14 +2,14 @@
 import os
 import logging
 
+import aiohttp.client_exceptions
+
 from sanic import Sanic, response
 from sanic.response import json
 from sanic.exceptions import abort, NotFound, Unauthorized, MethodNotSupported, InvalidUsage
 
 from tortoise.contrib.sanic import register_tortoise
 import tortoise.exceptions
-
-import aiohttp.client_exceptions
 
 import lib.config
 import lib.model
@@ -27,16 +27,6 @@ app.blueprint(lib.component.products.bp)
 register_tortoise(
     app, db_url=lib.config.DATABASE_URL, modules={"model": ["lib.model"]}, generate_schemas=True
 )
-
-
-@app.listener('before_server_start')
-async def before_server_start(app, loop) -> None:
-    print("START")
-
-
-@app.listener('after_server_stop')
-async def after_server_stop(app, loop) -> None:
-    print("END")
 
 
 @app.exception(Unauthorized)

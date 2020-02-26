@@ -2,6 +2,11 @@ from tortoise.models import Model
 from tortoise import fields
 
 
+class TimestampMixin():
+    createdAt = fields.DatetimeField(auto_now_add=True)
+    updatedAt = fields.DatetimeField(auto_now=True)
+
+
 class Products(Model):
 
     id = fields.UUIDField(pk=True)
@@ -19,7 +24,7 @@ class Products(Model):
         }
 
 
-class Offers(Model):
+class Offers(Model, TimestampMixin):
 
     id = fields.CharField(255, pk=True)
 
@@ -38,4 +43,6 @@ class Offers(Model):
             "product": str(self.product_id),
             "price": self.price,
             "items_in_stock": self.items_in_stock,
+            "createdAt": self.createdAt.isoformat(),
+            "updatedAt": self.updatedAt.isoformat(),
         }
