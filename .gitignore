@@ -30,7 +30,7 @@ MANIFEST
 supervisord.pid
 
 # Robot test results directory
-results/*
+results/
 !results/.gitkeep 
 
 # PyInstaller
