@@ -1,3 +1,4 @@
+from sanic_openapi import doc
 from sanic.response import json
 from sanic import Blueprint
 
@@ -9,7 +10,17 @@ bp = Blueprint('products.offers',
                )
 
 
+class OfferOutput:
+    id = doc.String("Offer ID.")
+    product = doc.String("Product UUID.")
+    price = doc.String("Offer price.")
+    items_in_stock = doc.String("Product items in stock.")
+    createdAt = doc.DateTime("Datetime of item creation.")
+    updatedAt = doc.DateTime("Datetime of item last update.")
+
+
 @bp.get('/')
+@doc.produces([OfferOutput])
 async def fetch(request, productId) -> list:
     """Return list of product offers"""
 

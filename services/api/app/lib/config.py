@@ -8,7 +8,7 @@ DOMAIN = os.environ.get('DOMAIN', "productmaker.cz")
 ENVIRONMENT = os.environ.get('ENVIRONMENT', "develop")
 SESSION_HEADER = os.environ.get('SESSION_HEADER', "X-Authorization")
 
-API_KEY = os.environ.get('API_KEY', "9414d36b-1da2-430a-b8c5-d0961dc37aa4")
+API_KEY = os.environ.get('API_KEY', None)
 API_URL = os.environ.get(
     'API_URL', "https://applifting-python-excercise-ms.herokuapp.com/api/v1/")
 

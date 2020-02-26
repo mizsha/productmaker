@@ -1,7 +1,15 @@
 version: "2"
 services:
+  postgres:
+    image: postgres:10
+    environment:
+      - POSTGRES_DB=productmaker
+      - POSTGRES_PASSWORD=productmaker
+      - POSTGRES_USER=productmaker
   api:
     image: registry.gitlab.com/applifting/productmaker/api:${IMAGE_TAG}
+    depends_on:
+      - postgres
     build:
       context: services/api
       dockerfile: Dockerfile.api
@@ -9,4 +17,4 @@ services:
       - "5000:5000"
     environment:
       DEBUG: "True"
-      DATABASE_URL: postgres://root@172.17.0.1:26257/productmaker
+      DATABASE_URL: postgres://productmaker:productmaker@postgres:5432/productmaker

@@ -1,9 +1,10 @@
-FROM alpine:3
+FROM python:3.7.6-alpine
+
 MAINTAINER Michal Matous <michal.matous@gmail.com>
 
 EXPOSE 5000
 
-RUN apk add --no-cache curl python3-dev\
+RUN apk add --no-cache curl make gcc openssl-dev libffi-dev musl-dev\
   && rm -rf /var/cache/apk/*
 
 RUN pip3 install Cython

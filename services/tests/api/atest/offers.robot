@@ -4,7 +4,7 @@ Documentation   Test scenarios for products method.
 
 
 *** Test Cases ***
-GET non existent product offers
+GET non existent product offers, negative test
     GET         /products/123/offers
     Integer     response status     404
 
