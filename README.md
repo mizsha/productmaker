@@ -39,6 +39,9 @@
 
 ### Install and run Robot Test Framework
 
+- cd services/api/app/
+- coverage api.py
+
 - cd services/tests/api/
 - pip install -r requirements.txt
 - robot --variable SERVER:http://localhost:5000/v1/ --outputdir results atest/
