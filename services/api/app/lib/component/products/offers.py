@@ -21,6 +21,7 @@ class OfferOutput:
 
 @bp.get('/')
 @doc.produces([OfferOutput])
+@doc.summary("Fetch all Product Offers")
 async def fetch(request, productId) -> list:
     """Return list of product offers"""
 

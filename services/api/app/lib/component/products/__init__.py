@@ -27,11 +27,6 @@ ProductForm = {
 }
 
 
-class ProductInput:
-    name = doc.String("Product name.")
-    description = doc.String("Product description.")
-
-
 class ProductOutput:
     id = doc.String("Product UUID.")
     name = doc.String("Product name.")
@@ -39,8 +34,17 @@ class ProductOutput:
 
 
 @bp_index.post('/')
-@doc.consumes(ProductInput, location='body', content_type="application/json")
+@doc.consumes(
+    doc.JsonBody(
+        {
+            "name": doc.String("Product name."),
+            "description": doc.String("Product description."),
+        }
+    ),
+    location="body", content_type="application/json"
+)
 @doc.produces(ProductOutput)
+@doc.summary("Create new product")
 @validate_json(ProductForm, clean=True)
 async def create(request, valid_json) -> dict:
     """Create product method"""
@@ -80,6 +84,7 @@ async def create(request, valid_json) -> dict:
 
 @bp_index.get('/')
 @doc.produces([ProductOutput])
+@doc.summary("Fetch all products")
 async def fetch(request) -> list:
     """Return list of products"""
 
@@ -90,6 +95,7 @@ async def fetch(request) -> list:
 
 @bp_index.get('/<productId:uuid>')
 @doc.produces(ProductOutput)
+@doc.summary("Get product detail")
 async def get(request, productId) -> dict:
     """Return specified product"""
 
@@ -99,8 +105,17 @@ async def get(request, productId) -> dict:
 
 
 @bp_index.patch('/<productId:uuid>')
-@doc.consumes(ProductInput, location='body', content_type="application/json")
+@doc.consumes(
+    doc.JsonBody(
+        {
+            "name": doc.String("Product name."),
+            "description": doc.String("Product description."),
+        }
+    ),
+    location="body", content_type="application/json"
+)
 @doc.produces(ProductOutput)
+@doc.summary("Update product values")
 @validate_json(ProductForm, clean=True)
 async def patch(request, productId, valid_json) -> dict:
     """Patch and return updated specified product"""
@@ -115,6 +130,7 @@ async def patch(request, productId, valid_json) -> dict:
 
 
 @bp_index.delete('/<productId:uuid>')
+@doc.summary("Delete product")
 async def delete(request, productId) -> dict:
     """Delete specified product and return blank dict if success"""
 
