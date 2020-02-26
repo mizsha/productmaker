@@ -7,3 +7,4 @@ sentry_sdk
 tortoise-orm
 asyncpg
 aiohttp
+apscheduler
